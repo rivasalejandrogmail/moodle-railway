@@ -25,6 +25,7 @@ RUN apk add --no-cache su-exec
 # Make the worker cap a variable. The image's entrypoint runs every php-fpm
 # config file through envsubst, so ${PHP_FPM_MAX_CHILDREN} is resolved at boot
 # and a Railway resize can be followed without rebuilding.
+RUN php -v && find /etc -name www.conf -print
 RUN sed -i 's/^pm\.max_children[[:space:]]*=.*/pm.max_children = ${PHP_FPM_MAX_CHILDREN}/' \
         /etc/php83/php-fpm.d/www.conf \
     && grep -q 'PHP_FPM_MAX_CHILDREN' /etc/php83/php-fpm.d/www.conf
