@@ -6,10 +6,11 @@ require '/var/www/html/config.php';
 $directory = '/usr/local/share/carbono-campus';
 $html = file_get_contents($directory . '/welcome.html');
 $css = file_get_contents($directory . '/campus.css');
-if ($html === false || $css === false) {
+$js = file_get_contents($directory . '/login.js');
+if ($html === false || $css === false || $js === false) {
     throw new RuntimeException('Carbono Forestal branding files are missing.');
 }
-$version = hash('sha256', $html . $css . $CFG->wwwroot . 'campus-v1');
+$version = hash('sha256', $html . $css . $js . $CFG->wwwroot . 'campus-v1');
 if (get_config('local_carbonocampus', 'brandingrevision') === $version) {
     echo "railway: campus branding unchanged\n";
     exit(0);
@@ -26,7 +27,7 @@ $icon = htmlspecialchars($assetbase . '/icon.png', ENT_QUOTES, 'UTF-8');
 set_config('additionalhtmlhead', trim($head) . "\n" . $start
     . "\n" . '<link rel="icon" type="image/png" href="' . $icon . '">'
     . "\n" . '<meta name="theme-color" content="#123d2c">'
-    . "\n<style>\n" . $css . "\n</style>\n" . $end);
+    . "\n<style>\n" . $css . "\n</style>\n<script>\n" . $js . "\n</script>\n" . $end);
 
 $DB->update_record('course', (object)[
     'id' => SITEID,
