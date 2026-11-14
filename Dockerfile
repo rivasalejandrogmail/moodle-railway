@@ -45,6 +45,10 @@ COPY --chown=nobody:nobody --chmod=0644 \
      rootfs/etc/nginx/server-conf.d/railway-security.conf \
      /etc/nginx/server-conf.d/railway-security.conf
 
+COPY --chown=nobody:nobody --chmod=0644 \
+     rootfs/etc/nginx/server-conf.d/railway-esm.conf \
+     /etc/nginx/server-conf.d/railway-esm.conf
+
 COPY --chmod=0755 \
      railway-entrypoint.sh \
      /railway-entrypoint.sh
