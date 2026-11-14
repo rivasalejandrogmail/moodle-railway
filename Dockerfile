@@ -53,6 +53,15 @@ COPY --chmod=0755 \
      railway-entrypoint.sh \
      /railway-entrypoint.sh
 
+COPY --chown=nobody:nobody --chmod=0644 branding/ /usr/local/share/carbono-campus/
+RUN find /usr/local/share/carbono-campus -type d -exec chmod 0755 {} +
+COPY --chown=nobody:nobody --chmod=0755 \
+     rootfs/docker-entrypoint-init.d/60-carbono-campus.sh \
+     /docker-entrypoint-init.d/60-carbono-campus.sh
+COPY --chown=nobody:nobody --chmod=0644 \
+     rootfs/etc/nginx/server-conf.d/carbono-campus.conf \
+     /etc/nginx/server-conf.d/carbono-campus.conf
+
 # Preparar las dependencias de Moodle durante la compilación.
 USER nobody
 ENV COMPOSER_HOME=/tmp/.composer

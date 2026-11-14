@@ -57,3 +57,11 @@ Moodle's own UI is reverted by the next deployment.
 ## Licence
 
 Moodle is GPL-3.0-or-later; the upstream image is MIT. This layer is MIT.
+
+## Carbono Forestal campus branding
+
+`branding/` contains the login welcome content, scoped CSS and public brand images. The startup hook `60-carbono-campus.sh` applies the native Moodle `auth_instructions` and `additionalhtmlhead` settings and the site display name after Moodle is ready. It preserves unrelated head additions and skips unchanged revisions. Login authentication, accounts, course records and uploaded files are not replaced.
+
+The assets are served by Nginx under `/carbono-campus/` from the image, outside the Moodle source sync. Update the branding files to revise the design; the next deployment reapplies it and purges Moodle caches once.
+
+Local design preview: `node branding/preview.cjs`, then open `http://localhost:3110`. This uses a disabled mock form; actual Moodle integration must be checked after deployment. To disable the branding, remove its marked block from the additional head setting and clear the authentication instructions; disable the startup hook before the next deployment to keep those changes.
