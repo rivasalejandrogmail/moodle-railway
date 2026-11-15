@@ -36,9 +36,6 @@
 #page-login-index .cf-facts span{display:block;font-size:9px;letter-spacing:2px;color:#c5dd92;margin-bottom:7px}
 #page-login-index .cf-facts strong{display:block;font-size:14px;font-weight:500;color:#fffdf0;line-height:1.5}
 #page-login-index .cf-facts small{display:block;color:#bdcfb4;font-size:11px;margin-top:4px;line-height:1.6}
-#page-login-index .cf-team{margin:0 0 34px;border:1px solid #ffffff24;border-radius:6px;overflow:hidden;background:#0c2a1d}
-#page-login-index .cf-team img{display:block;width:100%;height:auto;object-fit:cover}
-#page-login-index .cf-team figcaption{padding:12px 16px;font-size:11px;line-height:1.6;color:#d4e1c7}
 #page-login-index .cf-program h2{font-size:28px;font-weight:500;letter-spacing:-.7px;line-height:1.2;color:#fffdf0;margin:0 0 20px}
 #page-login-index .cf-program ol{list-style:none;counter-reset:ejes;margin:0;padding:0}
 #page-login-index .cf-program li{counter-increment:ejes;display:flex;gap:16px;padding:13px 0;border-top:1px solid #ffffff20;font-size:13px;line-height:1.6;color:#e0e8d7}
